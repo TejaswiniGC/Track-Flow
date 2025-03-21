@@ -1,0 +1,166 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh; 
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.right-menu {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* Damaged Button */
+.damaged-btn {
+  background-color: #5a6268;
+  color: white;
+  border: none;
+}
+
+.damaged-btn:hover {
+  background-color: #495057;
+}
+
+/* Recovery Button */
+.recovery-btn {
+  background-color: #218838;
+  color: white;
+  border: none;
+}
+
+.recovery-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Offline Sold Button */
+.offline-sold-btn {
+  background-color: #ff9800; /* Orange */
+  color: white;
+  border: none;
+}
+
+.offline-sold-btn:hover {
+  background-color: #e68900;
+}
+
+/* Inbound Items Button */
+.inbound-items-btn {
+  background-color: #007bff; /* Blue */
+  color: white;
+  border: none;
+}
+
+.inbound-items-btn:hover {
+  background-color: #0069d9;
+}
+
+.form-container {
+  flex-grow: 1;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #f4f4f4; 
+}
+
+.logo-container {
+  flex: 0 0 auto; 
+}
+
+.custom-logo {
+  width: 70px;
+  height: auto;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 5rem;
+}
+
+.card {
+  width: 300px;
+  height: 141px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+/* Card Colors */
+.card:first-child {
+  background-color: #737d86; /* Gray for Damaged Plants */
+  color: white;
+}
+
+.card:nth-child(2) {
+  background-color: #4caf50; /* Green for Recovery Plants */
+  color: white;
+}
+
+.card:nth-child(3) {
+  background-color: #e4931a; /* Orange for Offline Sold */
+  color: white;
+}
+
+.card:nth-child(4) {
+  background-color: #3a6491; /* Blue for Inbound Items */
+  color: white;
+}

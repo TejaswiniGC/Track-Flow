@@ -1,0 +1,44 @@
+runtime: nodejs20
+service: google-sheet-form  # Change to your service name
+
+env_variables:
+  REACT_APP_FORM1_URL: "https://script.google.com/macros/s/AKfycbzISAghtGBuXUb-aXbo_A9R8Ets4Eqyy1air7Pedzo8DjoW_S_OfA_4hOKFF4I9eJbqEw/exec"
+  REACT_APP_FORM2_URL: "https://script.google.com/macros/s/AKfycbzISAghtGBuXUb-aXbo_A9R8Ets4Eqyy1air7Pedzo8DjoW_S_OfA_4hOKFF4I9eJbqEw/exec"
+
+automatic_scaling:
+  min_instances: 1  # Ensures at least 1 instance is running
+  max_instances: 10 # Set max instances to avoid high costs
+  target_cpu_utilization: 0.65
+  target_throughput_utilization: 0.75
+
+handlers:
+  # Serve static assets correctly
+  - url: /static
+    static_dir: build/static
+
+  # Serve API requests (Modify if needed)
+  - url: /api/.*
+    script: auto
+    secure: always
+
+  # Serve important static files
+  - url: /favicon.ico
+    static_files: build/favicon.ico
+    upload: build/favicon.ico
+
+  - url: /manifest.json
+    static_files: build/manifest.json
+    upload: build/manifest.json
+
+  - url: /service-worker.js
+    static_files: build/service-worker.js
+    upload: build/service-worker.js
+
+  - url: /robots.txt
+    static_files: build/robots.txt
+    upload: build/robots.txt
+
+  # Catch-all handler for React Router (SPA support)
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
