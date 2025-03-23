@@ -1,3 +1,4 @@
+# Track-Flow Of prducts.
 Track-Flow is a dynamic inventory and product management system designed to handle different types of products seamlessly. The project can be customized to store, track, and manage product movements such as Damaged goods, Recoveries, Inbound Inventory items and Offline sales.
 
 🚀 Features
