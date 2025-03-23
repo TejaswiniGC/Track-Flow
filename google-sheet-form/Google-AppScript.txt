@@ -1,0 +1,64 @@
+function doPost(e) {
+  try {
+    if (!e || !e.postData || !e.postData.contents) {
+      return ContentService.createTextOutput("Error: No data received")
+        .setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    Logger.log("Received Data: " + e.postData.contents);
+    var data = JSON.parse(e.postData.contents);
+
+    var sheetId = "1ICI3Cj_bS67JynbApbk6XMCQpTf-ZzsHV8v25CsZ7xs"; 
+    var ss = SpreadsheetApp.openById(sheetId);
+
+ 
+    var sheetNameMap = {
+      "recovery": "Recovery",
+      "damaged": "Damaged",
+      "sale": "Offline Sold",
+      "inboundItems": "Inbound Items"
+    };
+    
+    var sheetName = sheetNameMap[data.type];
+    if (!sheetName) {
+      return ContentService.createTextOutput("Invalid type").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) {
+      return ContentService.createTextOutput("Sheet not found").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+  
+    var rowData = [];
+
+    if (data.type === "recovery" || data.type === "damaged") {
+      rowData = [data.Date, data.PersonName, data.Email, data.ProductName, data.Quantity, data.Comments];
+    } else if (data.type === "sale") { 
+      rowData = [
+        data.Date, data.PersonName, data.Email, 
+        data.ProductName, data.ProductQuantity, 
+        data.PlaceOfSale, data.Comments
+      ];
+    } else if (data.type === "inboundItems") { 
+      rowData = [
+        data.date, data.personName, data.email, 
+        data.productName, data.poNumber, 
+        data.quantityOrdered, data.quantityReceived, 
+        data.quantityUpdate, data.reasonForUpdate, 
+        data.comments
+      ];
+    }
+
+  
+    sheet.appendRow(rowData);
+
+    return ContentService.createTextOutput(JSON.stringify({ status: "Success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    Logger.log("Error: " + error.toString());
+    return ContentService.createTextOutput(JSON.stringify({ error: error.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}

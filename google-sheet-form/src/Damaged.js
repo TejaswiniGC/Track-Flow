@@ -192,7 +192,7 @@ const Damaged = () => {
     };
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyuwpFYly-5VpX9ImBUIIA3Ip7OLIutSsNOpZX1i_GCKwSkO_BHkehiiEspDxcTBVZjXQ/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyKC1mj-zxwkH8BlZldHRs9FrAKIFN5YuycnyC8BWsFETmmV3_HgXDJugapRSYpY2wDXA/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
